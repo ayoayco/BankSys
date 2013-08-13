@@ -1,0 +1,5 @@
+
+<div id="footer">
+:) &copy;2013 by Ayo Ayco. All Rights Reserved.<br />
+This is a product of exercises for IT 210.
+</div>
