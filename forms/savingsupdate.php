@@ -8,7 +8,7 @@ session_start();
  $myusername = $_SESSION['myusername'];
 	session_start();
 	if(! isset( $_SESSION['myusername'] ) ){
-	  header("location:index2.php");
+	  header("location:../index2.php");
  	}
 
  	$sql = "select * from user_accounts";
@@ -16,7 +16,7 @@ session_start();
  	while($rows = mysql_fetch_array($result)){
  	  if($rows['username']==$_SESSION['myusername']){
  		if($rows['user_type'] != 'user'){
- 		  header("location:index2.php");
+ 		  header("location:../index2.php");
  		}
  	  }
  	}
@@ -40,9 +40,37 @@ $pagename = 'Update Savings Account Application';
   
 <div id="bodydiv">
 <?include('../parts/loginbody.php');?>
+
+<table>
+	<tr>
+		<td>&rarr; <a class="buttonlink" href="../user.php">Cancel</a></td>
+	</tr>
+</table>
+
 	<h2>Update Savings/ATM Account Application Form</h2>
 
 	<form method="post" action="savingupdatesuccess.php" id="contactform">
+	
+	<!--<fieldset>
+		<legend>Online Login Information</legend>
+		<table>
+			<tr>
+				<td>*Old Password:</td>
+				<td><input type="password" name="oldpword" size="20" class="required" /></td>
+			</tr>
+			<tr>
+				<td width="220px">New Password:</td>
+				<td><input type="password" name="pwordone" size="20" /><br />
+				Leave blank if you don't want to change your password.</td>
+			</tr>
+			<tr>
+				<td width="220px">Repeat New Password:</td>
+				<td><input type="password" name="pwordtwo" size="20" /><br />
+				Leave blank if you don't want to change your password.</td>
+			</tr>
+		</table>
+	</fieldset>-->
+	
 	<fieldset>
 	  <legend>Personal Information</legend>
 	  
@@ -518,24 +546,6 @@ $pagename = 'Update Savings Account Application';
 	<input name="refBranchCode" value = "<?echo $rows[refbranchcode]?>" maxlength="5" /></td></tr>
 	<tr><td><label>Name of Referring Employee:</label></td><td>
 	<input name ="refemployee" maxlength="30" value = "<?echo $rows[refemployee]?>" size="20" /></td></tr>
-  </table>
-</fieldset>
-
-<fieldset>
-  <legend>Online Login Information</legend>
-  <table>
-    <tr>
-      <td>Old Password:</td>
-      <td><input type="password" name="oldpword" size="20" /></td>
-    </tr>
-    <tr>
-      <td width="220px">New Password:</td>
-      <td><input type="password" name="pwordone" size="20" /></td>
-    </tr>
-    <tr>
-      <td width="220px">Repeat New Password:</td>
-      <td><input type="password" name="pwordtwo" size="20" /></td>
-    </tr>
   </table>
 </fieldset>
 

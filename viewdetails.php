@@ -15,7 +15,7 @@ session_start();
  	$result = mysql_query($sql);
  	while($rows = mysql_fetch_array($result)){
  	  if($rows['username']==$_SESSION['myusername']){
- 		if($rows['user_type'] != 'user'){
+ 		if($rows['user_type'] != 'admin'){
  		  header("location:index2.php");
  		}
  	  }
@@ -36,11 +36,9 @@ session_start();
 <a name="top"></a>
 
 <? @include('parts/header.php');?>
-<?@include('parts/usernavmenu.php');?>
-
 <?php
 	//get user applications
-	$sql = "SELECT * FROM savings_accounts WHERE uname = '$myusername'";
+	$sql = "SELECT * FROM savings_accounts WHERE id = '$_GET[id]'";
 	$result = mysql_query($sql, $con) or die('Error: ' . mysql_error());
 	if($rows = mysql_fetch_array($result)){
 // 		echo $rows['user_type'];
@@ -82,28 +80,20 @@ session_start();
 // 	echo "<br /><br />$myusername!";
 ?>
 
+
 <div id="bodydiv">
-<?if($approved == "FALSE" || $approved == "APPROVED") echo '<h2>Welcome, '.$fname.' ('. $myusername.')</h2>'?>
-<?php
-    if($approved == "FALSE")
-    echo '
-<div class="notice">
-    <p>You are now logged in. You will be notified here when your application is approved.</p>
-    <ul>
-	<li>&rarr; <a href="forms/savingscancel.php?id= '.$rows[id].'">Cancel Application</a></li>
-	<li>&rarr; <a href="forms/savingsupdate.php?id= '.$rows[id].'">Edit Application</a></li>
-    </ul>
-</div>'?>
-
-
-
-
- <?php
-	if($approved == "FALSE") @include('userdetails.php');
-	else if($approved == "APPROVED") @include('userbankingdetails.php');
-	else echo '<p class="notice" style="text-align:center;">Your application was <span style="color:red;">DISAPPROVED</span>.</p>';
-?>
-
+<h2>View Application Details</h2>
+<table>
+	<tr>
+		<td><ul>
+			<li>&rarr; <a href="admin.php">Back</a></li>
+			<li>&rarr; <? if($approved != "APPROVED") echo '<a href="approve.php?id='.$rows[id].'">Approve</a>'; else echo "Approve";?></li>
+			<li>&rarr; <a href="disapprove.php?id=<?echo $rows[id]?>">Disapprove</a></li>
+			</ul>
+		</td>
+	</tr>
+</table>
+ <?@include('userdetails.php');?>
 
 </div>
 
