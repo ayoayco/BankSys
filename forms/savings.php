@@ -518,7 +518,9 @@ $pagename = 'Savings Account Application';
 <br />
 <br />
 <div id="submitclass">
-	<input type="submit" value="Submit" id="submit1" name="smethod" />
+	<script>
+		if(wrong == "false") document.write('<input type="submit" value="Submit" id="submit1" name="smethod" />');
+	</script>
 </div>
 
 <br />

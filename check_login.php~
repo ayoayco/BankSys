@@ -27,7 +27,6 @@ $result=mysql_query($sql);
 	if($count==1){
 		session_start();
 		$_SESSION['myusername'] = $_POST['myusername'];
-		$_SESSION['age'] = 18;
 		//header("location:success.php");
 		if($row = mysql_fetch_array($result)){
 			if($row['user_type']=="admin"){

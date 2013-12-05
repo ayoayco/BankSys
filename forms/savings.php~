@@ -1,6 +1,7 @@
 <?php
 $pagename = 'Savings Account Application';
 @include('head.php');
+
 ?>
 
 <body>
@@ -273,7 +274,10 @@ $pagename = 'Savings Account Application';
 	<tr><td><label>Number of Dependents:</label></td><td>
 	<input name="dependents" maxlength="1" size="3" class="required" /></td></tr>
 	<tr><td><label>*E-mail Address:</label></td><td>
-	<input id="email" name="email" maxlength="40" size="30" class="required email" /></td></tr>
+	<input id="email" name="email" maxlength="40" size="20" class="required email" />
+<img id="tick2" src="../images/tick.png" width="16" height="16"/>
+<img id="cross2" src="../images/cross.png" width="16" height="16"/>
+	<br /><span class="email_val validation"></span></td></tr>
 	<tr><td><label>Fax Number:</label></td><td>
 	<input name="fax" maxlength="20" size="30" /></td></tr>
 	<tr><td><label>*Cellular Phone Number:</label></td><td>
@@ -499,12 +503,14 @@ $pagename = 'Savings Account Application';
   <legend>Online Login Information</legend>
   <table>
     <tr>
-      <td>Username:</td>
-      <td><input name="uname" size="20" /></td>
+      <td>*Username:</td>
+      <td><input name="uname" id="username" size="20" class="required" />
+<img id="tick" src="../images/tick.png" width="16" height="16"/>
+<img id="cross" src="../images/cross.png" width="16" height="16"/></td>
     </tr>
     <tr>
-      <td width="220px">Password:</td>
-      <td><input type="password" name="pword" size="20" /></td>
+      <td width="220px">*Password:</td>
+      <td><input type="password" id="password" name="pword" size="20" class="required" /></td>
     </tr>
   </table>
 </fieldset>
@@ -512,7 +518,9 @@ $pagename = 'Savings Account Application';
 <br />
 <br />
 <div id="submitclass">
-	<input type="submit" value="Submit" id="submit1" name="smethod" />
+	<script>
+		if(wrong == "false") document.write('<input type="submit" value="Submit" id="submit1" name="smethod" />');
+	</script>
 </div>
 
 <br />

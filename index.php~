@@ -16,7 +16,7 @@
 
 <?include('parts/loginbody.php');?>
 <p class="notice">
-BankSys is an online portal for banking transactions. You may start by applying for accounts via the <a href="application-forms.php">application forms</a>.
+BankSys is an online portal for banking transactions. All transactions are simple, secure, and sure. You may start by applying for accounts via the <a href="application-forms.php">application forms</a> or <a class="login-window" href="#login-box">signing in<a>.
 </p>
 
 </div>

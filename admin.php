@@ -40,7 +40,7 @@ session_start();
 
 <div id="bodydiv">
 
-<h2>Welcome, Administrator (<?echo $_SESSION['myusername']?>)!</h2>
+<h2>Welcome, Administrator (<?echo $_SESSION['myusername']?>)! Age: <?echo $_SESSION['age']?></h2>
 
 <!-- list applications for approval -->
 <?php

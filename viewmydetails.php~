@@ -88,7 +88,7 @@ session_start();
 		<td><ul>
 			<li>&rarr; <a href="user.php">Back</a></li>
 			<li>&rarr; <a href="forms/savingsupdate.php?id=<?echo $rows[id]?>">Edit My Information</a></li>
-		</ul>
+			</ul>
 		</td>
 	</tr>
 </table>

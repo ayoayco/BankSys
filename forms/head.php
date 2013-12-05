@@ -3,14 +3,13 @@
 	<title><?echo($pagename);?> | BankSys: Simple. Secure. Sure.</title>
 	<link rel="stylesheet" type="text/css" href="../style.css" />
 	<script src="../script/jquery.min.js" type="text/javascript"></script>
-	<script src="../script/jquery.validate.pack.js" type="text/javascript">
-	<script src="script.js" type="text/javascript">
-	</script><script type="text/javascript" src="../script.js"></script>
+	<script src="../script/jquery.validate.pack.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	    $(document).ready(function(){
 		$("#contactform").validate();
 	    });
 	</script>
+
 	<?@include('../parts/loginscript.php');?>
 	
 	<style>
@@ -34,19 +33,19 @@
 
 	</style>
 	<script>
+		var wrong = "false";
 		$(document).ready(function(){
 			$('#username').keyup(username_check);
 			$('#email').keyup(email_check);
 			
 		});
 		
+		
 		function username_check(){	
 			var username = $('#username').val();
 			if(username == ""){
 				$('#username').css('border', '3px #CCC solid');
 				$('#tick').hide();
-				$('#tick').hide();
-				$('#submit1').hide();
 			}else{
 				jQuery.ajax({
 					type: "POST",
@@ -54,14 +53,18 @@
 					data: 'username='+ username,
 					cache: false,
 					success: function(response){
-					if(response == 1){
-						$('#username').css('border', '3px #C33 solid');	
-						$('#tick').hide();
-						$('#cross').fadeIn();
+					if(response == 1){ // wrong
+							wrong = "true";
+							$('#username').css('border', '3px #C33 solid');	
+							$('#tick').hide();
+							$('#cross').fadeIn();
+							$('#submit1').hide();
 						}else{
-						$('#username').css('border', '3px #090 solid');
-						$('#cross').hide();
-						$('#tick').fadeIn();
+							wrong = "false";
+							$('#username').css('border', '3px #090 solid');
+							$('#cross').hide();
+							$('#tick').fadeIn();
+							$('#submit1').fadeIn();
 						}
 
 					}
@@ -74,7 +77,6 @@
 			if(email == ""){
 				$('#email').css('border', '3px #CCC solid');
 				$('#tick2').hide();
-				$('#submit1').hide();
 			}else{
 				jQuery.ajax({
 					type: "POST",
@@ -82,14 +84,18 @@
 					data: 'email='+ email,
 					cache: false,
 					success: function(response){
-					if(response == 1){
-						$('#email').css('border', '3px #C33 solid');	
-						$('#tick2').hide();
-						$('#cross2').fadeIn();
+					if(response == 1){ // wrong
+							wrong = "true";
+							$('#email').css('border', '3px #C33 solid');	
+							$('#tick2').hide();
+							$('#cross2').fadeIn();
+							$('#submit1').hide();
 						}else{
-						$('#email').css('border', '3px #090 solid');
-						$('#cross2').hide();
-						$('#tick2').fadeIn();
+							wrong = "false";
+							$('#email').css('border', '3px #090 solid');
+							$('#cross2').hide();
+							$('#tick2').fadeIn();
+							$('#submit1').fadeIn();
 						}
 
 					}
